@@ -20,7 +20,6 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-	console.log(humanChoice, computerChoice);
 	if (humanChoice == "rock" && computerChoice == "scissors") {
 		humanScore += 1;
 		displayRoundResult("win", humanChoice, computerChoice);
@@ -28,8 +27,23 @@ function playRound(humanChoice, computerChoice) {
 		computerScore += 1;
 		displayRoundResult("lose", humanChoice, computerChoice);
 	} else if (humanChoice == "rock" && computerChoice == "rock") {
-		computerScore += 1;
 		displayRoundResult("draw", humanChoice, computerChoice);
+	} else if (humanChoice == "paper" && computerChoice == "rock") {
+		humanScore += 1;
+		displayRoundResult("win", humanChoice, computerChoice);
+	} else if (humanChoice == "paper" && computerChoice == "scissors") {
+		computerScore += 1;
+		displayRoundResult("lose", humanChoice, computerChoice);
+	} else if (humanChoice == "paper" && computerChoice == "paper") {
+		displayRoundResult("draw", humanChoice, computerChoice);
+	} else if (humanChoice == "scissors" && computerChoice == "rock") {
+		computerScore += 1;
+		displayRoundResult("lose", humanChoice, computerChoice);
+	} else if (humanChoice == "scissors" && computerChoice == "scissors") {
+		displayRoundResult("draw", humanChoice, computerChoice);
+	} else if (humanChoice == "scissors" && computerChoice == "paper") {
+		humanScore += 1;
+		displayRoundResult("win", humanChoice, computerChoice);
 	}
 }
 
@@ -42,5 +56,12 @@ function displayRoundResult(res, playerChoice, computerChoice) {
 		console.log(`You ${res}! No one wins.`);
 	}
 }
+
+// function playGame() {
+// 	for (i = 1; i < 5; i++) {
+// 		console.log(`--------- Game ${i} ---------`);
+// 		playRound(humanSelection, computerSelection);
+// 	}
+// }
 
 //playRound(getHumanChoice(), getComputerChoice());
