@@ -2,10 +2,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
 	flex-wrap: wrap;
 	flex-direction: column;
-	gap: 0.5em;
+	gap: 5vh;
 }
 
 .player-selection {
@@ -19,15 +18,21 @@
 	cursor: pointer;
 }
 
-.computer-selection {
+.result,
+.score {
 	display: flex;
 	align-content: center;
 	justify-content: center;
 	height: 100px;
-	width: 500px;
+}
+
+.result,
+.score {
+	font-size: 0.5em;
 }
 
 * {
+	/* outline: 2px red solid; */
 	font-size: 8vw; /* set defualt font size for webpage */
 }
 

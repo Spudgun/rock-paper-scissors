@@ -37,21 +37,34 @@ function playRound(humanChoice, computerChoice) {
 
 function playGame(playerChoice) {
 	let result = playRound(playerChoice, getComputerChoice());
+	let resultHtml = document.querySelector('.result');
+	let score = document.querySelector('.score');
 
 	if (result.status == 'player') {
 		humanScore += 1;
-		console.log(`You win ${result.human} beats ${result.computer}.`);
+		resultHtml.innerText = `You win this round! ${result.human} beats ${result.computer}.`;
 	} else if (result.status == 'computer') {
 		computerScore += 1;
-		console.log(`You lose! ${result.human} loses to ${result.computer}.`);
+		resultHtml.innerText = `You lose this round ${result.human} loses to ${result.computer}.`;
 	} else {
-		console.log(`You draw! No one wins.`);
+		resultHtml.innerText = 'You both draw this round!';
 	}
 
-	console.log('Computer: ' + computerScore + ' - ' + 'Player: ' + humanScore);
+	score.innerText = 'Computer: ' + computerScore + ' - ' + 'Player: ' + humanScore;
+	if (computerScore < 5 && humanScore < 5) {
+	} else if (computerScore == 5) {
+		resultHtml.innerText = 'Computer Wins!';
+		computerScore = 0;
+		humanScore = 0;
+	} else {
+		resultHtml.innerText = 'You win!';
+		computerScore = 0;
+		humanScore = 0;
+	}
 }
 
 let selection = document.querySelectorAll('.choice');
+console.log(selection);
 
 selection.forEach(function (item) {
 	item.onclick = (event) => {
